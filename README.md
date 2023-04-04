@@ -34,7 +34,8 @@
 	student_id FK course
 	created_date
 	deleted_date
-
+	
+### ----------------------------------------------------------------------------------------------
 
 ## API Flow:
 
@@ -47,4 +48,44 @@
 	create course + set max capa -> /courses POST
 	view list course + number of student inside -> /courses GET
 	view course detail + view student list inside -> /courses/{id} GET
-    view list drops -> /courses/drops/ GET
+    	view list drops -> /courses/drops/ GET
+    
+### ----------------------------------------------------------------------------------------------
+
+# How to setup this project:
+
+### For db, we use postgres
+### For authenticate, we use jwt of "djoser"
+
+### First of all, you need to run this command to create environment for this project
+`cd project_name`
+
+`python3 -m venv venv`
+
+`source venv/bin/activate`
+
+`pip install -r requirements.txt`
+
+### If you don't have db yet, please follow this instruction:
+`sudo -i -u postgres psql`
+
+`CREATE DATABASE regov_quiz_v1;`
+
+`CREATE USER fudo4 WITH PASSWORD 'admin123';`
+
+`GRANT ALL PRIVILEGES ON DATABASE regov_quiz_v1 TO fudo4;`
+
+### Then you need to config db info by:
+### In tutorial/settings.py file, find `DATABASES` variable and setting postgresdb based on it
+### After that, run this command to migrate database
+`python3 manage.py migrate`
+
+### Now, you need to create a new user:
+`python3 manage.py createsuperuser`
+### Run server:
+`python3 manage.py runserver`
+### After finished, you can go to home page `127.0.0.1/8000` to try login
+
+### Now, you are good to go
+### Other information i've comment in the code
+### Try to read it to know how to use this api project
