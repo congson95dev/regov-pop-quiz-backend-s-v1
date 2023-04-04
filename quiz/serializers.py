@@ -1,5 +1,6 @@
 import datetime
 
+from django.db import transaction
 from rest_framework import serializers
 
 from quiz.models import Course, Student, CourseEnroll
@@ -42,8 +43,9 @@ class CourseEnrollCreateSerializer(serializers.ModelSerializer):
     student = serializers.PrimaryKeyRelatedField(queryset=Student.objects.all())
 
     def create(self, validated_data):
-        course_id = self.context['course_id']
-        return CourseEnroll.objects.create(course_id=course_id, **validated_data)
+        with transaction.atomic():
+            course_id = self.context['course_id']
+            return CourseEnroll.objects.create(course_id=course_id, **validated_data)
 
 
 class CourseEnrollUpdateSerializer(serializers.ModelSerializer):
@@ -52,7 +54,10 @@ class CourseEnrollUpdateSerializer(serializers.ModelSerializer):
         fields = ['id']
 
     def update(self, instance, validated_data):
-        # soft delete
-        instance.deleted_date = datetime.datetime.now()
-        instance.save()
-        return instance
+        if instance.deleted_date:
+            raise serializers.ValidationError('You have already drop this course')
+        with transaction.atomic():
+            # soft delete
+            instance.deleted_date = datetime.datetime.now()
+            instance.save()
+            return instance

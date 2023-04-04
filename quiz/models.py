@@ -3,19 +3,13 @@ from django.db import models
 
 
 class Student(models.Model):
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    email = models.EmailField(unique=True)
-    phone = models.IntegerField()
+    phone = models.IntegerField(null=True)
     birth_date = models.DateField(null=True)
-    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, related_name="student")
 
 
 class Administrator(models.Model):
-    firstname = models.CharField(max_length=255)
-    lastname = models.CharField(max_length=255)
-    email = models.EmailField(unique=True)
-    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
+    user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE, related_name="admin")
 
 
 class Course(models.Model):
@@ -26,5 +20,6 @@ class Course(models.Model):
 class CourseEnroll(models.Model):
     course = models.ForeignKey(Course, on_delete=models.PROTECT, related_name='course_enroll')
     student = models.ForeignKey(Student, on_delete=models.PROTECT, related_name='student_enroll')
+    created_date = models.DateTimeField(null=True, auto_now_add=True)
     deleted_date = models.DateTimeField(null=True)
 
