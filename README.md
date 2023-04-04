@@ -1,5 +1,11 @@
 # regov-pop-quiz-backend-s-v1
 
+## quiz:
+`https://github.com/regov-enterprise/pop-quiz-backend-s-v1`
+
+## Use case:
+`https://drive.google.com/file/d/1Vtx9Q_Eih5tAgqmtnVIMK8bBqwBAXGmD/view?usp=sharing`
+
 ## Design for the quiz:
 
 ## Database design:
@@ -41,3 +47,4 @@
 	create course + set max capa -> /courses POST
 	view list course + number of student inside -> /courses GET
 	view course detail + view student list inside -> /courses/{id} GET
+    view list drops -> /courses/drops/ GET
