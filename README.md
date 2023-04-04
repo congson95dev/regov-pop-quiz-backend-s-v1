@@ -54,7 +54,8 @@
 
 # How to setup this project:
 
-### For db, we use postgres
+### For framework, we use django rest framework
+### For database, we use postgres
 ### For authenticate, we use jwt of "djoser"
 
 ### First of all, you need to run this command to create environment for this project
