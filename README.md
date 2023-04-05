@@ -7,40 +7,7 @@
 
 # Database design:
 
-student
-
-```bash
-email
-first_name
-last_name
-username
-password
-birth_date
-phone
-```
-
-admin
-```bash
-email
-first_name
-last_name
-username
-password
-```
-
-course
-```bash
-title
-capacity
-```
-
-course_enroll
-```bash
-course_id FK course
-student_id FK course
-created_date
-deleted_date
-```
+![the picture](./database-design.png)
 
 # API Flow:
 
