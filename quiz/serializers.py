@@ -51,16 +51,22 @@ class CoursesSerializer(serializers.ModelSerializer):
         return course.course_enroll.filter(deleted_date__isnull=True).count()
 
 
-class CourseEnrollCreateSerializer(serializers.ModelSerializer):
+class CourseEnrollSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseEnroll
-        fields = ['id', 'student']
+        fields = ['id', 'student', 'course']
 
     student = serializers.PrimaryKeyRelatedField(queryset=Student.objects.all())
+    course = serializers.PrimaryKeyRelatedField(read_only=True)
 
     def create(self, validated_data):
         with transaction.atomic():
             course_id = self.context['course_id']
+            course_enrolled = CourseEnroll.objects\
+                .filter(course_id=course_id, student_id=validated_data.get('student').id)\
+                .exists()
+            if course_enrolled:
+                raise serializers.ValidationError('You have already enroll this course')
             return CourseEnroll.objects.create(course_id=course_id, **validated_data)
 
 
@@ -72,6 +78,8 @@ class CourseEnrollUpdateSerializer(serializers.ModelSerializer):
     def update(self, instance, validated_data):
         if instance.deleted_date:
             raise serializers.ValidationError('You have already drop this course')
+        if instance.course_id != self.context['course_id']:
+            raise serializers.ValidationError('This course dont have this enroll id')
         with transaction.atomic():
             # soft delete
             instance.deleted_date = datetime.datetime.now()

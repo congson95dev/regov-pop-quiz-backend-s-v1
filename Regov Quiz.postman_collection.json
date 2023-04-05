@@ -1,0 +1,278 @@
+{
+	"info": {
+		"_postman_id": "7d1dc635-8964-4139-a267-b0272676aae6",
+		"name": "Regov Quiz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "4386418"
+	},
+	"item": [
+		{
+			"name": "Course",
+			"item": [
+				{
+					"name": "Get List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjYxNzk5LCJpYXQiOjE2ODA2NTgxOTksImp0aSI6IjU4MjA5Y2Y1OTA5YzQ3MTlhOTQ3NWNjNmIwODc2MzAzIiwidXNlcl9pZCI6NH0.asFTzBZ35ftQBGcEYniuYqGMzEo2L0bnnHjV3x_WOnk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local_url}}/courses/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"courses",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Detail",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjYxNzk5LCJpYXQiOjE2ODA2NTgxOTksImp0aSI6IjU4MjA5Y2Y1OTA5YzQ3MTlhOTQ3NWNjNmIwODc2MzAzIiwidXNlcl9pZCI6NH0.asFTzBZ35ftQBGcEYniuYqGMzEo2L0bnnHjV3x_WOnk",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local_url}}/course/1/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"course",
+								"1",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjYxNzk5LCJpYXQiOjE2ODA2NTgxOTksImp0aSI6IjU4MjA5Y2Y1OTA5YzQ3MTlhOTQ3NWNjNmIwODc2MzAzIiwidXNlcl9pZCI6NH0.asFTzBZ35ftQBGcEYniuYqGMzEo2L0bnnHjV3x_WOnk",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"title\": \"test 2\",\n    \"capacity\": 100\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/courses/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"courses",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course Enroll",
+			"item": [
+				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjA1NDQ1LCJpYXQiOjE2ODA2MDE4NDUsImp0aSI6IjJhODg2MmI0NGRlNjQ3NGM4YjVjMDA2MzMzMzFmZGFkIiwidXNlcl9pZCI6NH0.ZjlQmz_0EykjSEW11zU4KgIeYOqyGMnheXwxv_Zdz2M",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"student\": 2\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/courses/2/course_enroll/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"courses",
+								"2",
+								"course_enroll",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjA1NDQ1LCJpYXQiOjE2ODA2MDE4NDUsImp0aSI6IjJhODg2MmI0NGRlNjQ3NGM4YjVjMDA2MzMzMzFmZGFkIiwidXNlcl9pZCI6NH0.ZjlQmz_0EykjSEW11zU4KgIeYOqyGMnheXwxv_Zdz2M",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/courses/4/course_enroll/9/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"courses",
+								"4",
+								"course_enroll",
+								"9",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"fudo5@gmail.com\",\n    \"username\": \"fudo12\",\n    \"password\": \"@dmin123\",\n    \"first_name\": \"fudo5fn\",\n    \"last_name\": \"fudo5ln\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/auth/users/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"auth",
+								"users",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"pm.globals.set(\"global_access_token\", jsonData.access); ",
+									"pm.variables.set(\"access_token\", jsonData.access);",
+									"pm.environment.set(\"access_token\", jsonData.access);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"fudo5\",\n    \"password\": \"@dmin123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/auth/jwt/create",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"auth",
+								"jwt",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Refresh Token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"refresh\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTY4MDY4MTk3NywiaWF0IjoxNjgwNTk1NTc3LCJqdGkiOiJmOWI0YmU3ZDA4Yzc0ZDhmYTVjYzFlYmJjN2JiY2Q4OSIsInVzZXJfaWQiOjR9.b8irmOvLy0aO4gqPbya9yO7y4-A1RsnCBCfPHqG0k4A\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/auth/jwt/refresh",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"auth",
+								"jwt",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

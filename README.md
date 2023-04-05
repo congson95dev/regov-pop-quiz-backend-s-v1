@@ -90,3 +90,5 @@
 ### Now, you are good to go
 ### Other information i've comment in the code
 ### Try to read it to know how to use this api project
+
+### I've post my postman collection in this repo, you can check in `Regov Quiz.postman_collection.json`
