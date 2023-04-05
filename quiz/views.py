@@ -5,14 +5,15 @@ from rest_framework.viewsets import GenericViewSet
 from quiz.models import Course, CourseEnroll
 from quiz.pagination import CustomPagination
 from quiz.permissions import IsStudent, IsAdmin
-from quiz.serializers import CourseSerializer, CourseEnrollCreateSerializer, CourseEnrollUpdateSerializer
+from quiz.serializers import CourseSerializer, CourseEnrollCreateSerializer, CourseEnrollUpdateSerializer, \
+    CoursesSerializer
 
 
-class CourseViewSet(mixins.CreateModelMixin,
-                    mixins.ListModelMixin,
-                    mixins.RetrieveModelMixin,
-                    GenericViewSet):
+class CoursesViewSet(mixins.ListModelMixin,
+                     mixins.CreateModelMixin,
+                     GenericViewSet):
     pagination_class = CustomPagination
+    serializer_class = CoursesSerializer
 
     def get_permissions(self):
         if self.request.method == 'POST':
@@ -22,7 +23,18 @@ class CourseViewSet(mixins.CreateModelMixin,
     def get_queryset(self):
         queryset = Course.objects.prefetch_related("course_enroll").all()
         return queryset
+
+
+class CourseViewSet(mixins.RetrieveModelMixin,
+                    GenericViewSet):
     serializer_class = CourseSerializer
+
+    def get_permissions(self):
+        return [IsAuthenticated()]
+
+    def get_queryset(self):
+        queryset = Course.objects.prefetch_related("course_enroll__student__user").all()
+        return queryset
 
 
 class CourseEnrollViewSet(mixins.CreateModelMixin,
@@ -42,4 +54,7 @@ class CourseEnrollViewSet(mixins.CreateModelMixin,
         return CourseEnrollCreateSerializer
 
     def get_serializer_context(self):
-        return {'course_id': self.kwargs['course_pk'], 'student_id': self.kwargs['pk']}
+        if self.kwargs.get('pk') is not None:
+            return {'course_id': self.kwargs['course_pk'], 'student_id': self.kwargs['pk']}
+        else:
+            return {'course_id': self.kwargs['course_pk']}

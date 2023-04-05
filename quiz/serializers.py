@@ -1,36 +1,52 @@
 import datetime
 
+from django.contrib.auth.models import User
 from django.db import transaction
 from rest_framework import serializers
 
 from quiz.models import Course, Student, CourseEnroll
 
 
+class CourseStudentUserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email']
+
+
 class CourseStudentSerializer(serializers.ModelSerializer):
     class Meta:
         model = Student
-        fields = ['id', 'firstname', 'lastname', 'email', 'phone', 'birth_date']
+        fields = ['id', 'user_id', 'user', 'phone', 'birth_date']
+
+    user = CourseStudentUserSerializer(read_only=True)
 
 
 class CourseEnrollSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseEnroll
-        fields = ['id']
+        fields = ['id', 'student']
 
-    # student = serializers.PrimaryKeyRelatedField(queryset=Student.objects.all())
+    student = CourseStudentSerializer(read_only=True)
 
 
 class CourseSerializer(serializers.ModelSerializer):
-    student_enrolled = CourseEnrollSerializer(many=True, read_only=True)
+    # nested serializer to show list student that enroll in particular course
+    course_enroll = CourseEnrollSerializer(many=True, read_only=True)
 
     class Meta:
         model = Course
-        fields = ['id', 'title', 'capacity', 'number_student_enrolled', 'student_enrolled']
+        fields = ['id', 'title', 'capacity', 'course_enroll']
+
+
+class CoursesSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Course
+        fields = ['id', 'title', 'capacity', 'number_student_enrolled']
 
     number_student_enrolled = serializers.SerializerMethodField(method_name='calculate_number_student_enrolled')
 
     # if "student_enrolled" >= "capacity", FE will disable the enroll button
-    # we will comeback and resolve the duplicate query later
     def calculate_number_student_enrolled(self, course: Course):
         return course.course_enroll.filter(deleted_date__isnull=True).count()
 
