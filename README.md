@@ -2,7 +2,7 @@
 `https://github.com/regov-enterprise/pop-quiz-backend-s-v1`
 
 # Use case:
-`https://drive.google.com/file/d/1Vtx9Q_Eih5tAgqmtnVIMK8bBqwBAXGmD/view?usp=sharing`
+![the picture](./use-case.png)
 
 
 # Database design:
