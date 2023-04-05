@@ -41,8 +41,12 @@ class CourseEnrollViewSet(mixins.ListModelMixin,
                           mixins.CreateModelMixin,
                           mixins.UpdateModelMixin,
                           GenericViewSet):
-    queryset = CourseEnroll.objects.filter(deleted_date__isnull=True).all()
     pagination_class = CustomPagination
+
+    def get_queryset(self):
+        if self.request.method == 'PUT':
+            return CourseEnroll.objects.all()
+        return CourseEnroll.objects.filter(deleted_date__isnull=True).all()
 
     def get_permissions(self):
         if self.request.method in ('POST', 'PUT'):
