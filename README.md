@@ -62,12 +62,6 @@ view list drops -> /drops/ GET
 
 # Setup:
 
-For framework, i'm using django rest framework
-
-For database, i'm using postgres
-
-For authenticate, i'm using jwt of "djoser"
-
 First of all, you need to run this command to create environment for this project
 
 ```bash
@@ -106,16 +100,30 @@ After that, run this command to migrate database
 
 `python3 manage.py migrate`
 
-Now, you need to create a new user:
+Now, you need to create a new admin:
 
-`python3 manage.py createsuperuser`
+`python3 manage.py createdefaultadmin`
 
 Run server:
 
 `python3 manage.py runserver`
 
-After finished, you can go to home page `127.0.0.1/8000` to try login
+After finished, you can go to home page `127.0.0.1:8000` to try login
 
 Now, you are good to go
 
+# Additional Info that you might want to know
+
+For framework, i'm using django rest framework
+
+For database, i'm using postgres
+
+For authenticate, i'm using jwt of "djoser"
+
+You can try to create a new student by running API `127.0.0.1:8000/auth/users/` or `Register User` in postman collection
+
+Admin account and Student account will have difference permission on each API.
+
 I've post my postman collection in this repo, you can check in `Regov Quiz.postman_collection.json`
+
+I'm resolve about handle concurrent requests from multiple users by using transaction.
