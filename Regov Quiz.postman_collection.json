@@ -103,14 +103,13 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjA1NDQ1LCJpYXQiOjE2ODA2MDE4NDUsImp0aSI6IjJhODg2MmI0NGRlNjQ3NGM4YjVjMDA2MzMzMzFmZGFkIiwidXNlcl9pZCI6NH0.ZjlQmz_0EykjSEW11zU4KgIeYOqyGMnheXwxv_Zdz2M",
-								"type": "text",
-								"disabled": true
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjY1MzU2LCJpYXQiOjE2ODA2NjE3NTYsImp0aSI6ImU5YTc2MTRlNjMxNDQ2OGJiZGI3MTZiMWM2MjRkOTMyIiwidXNlcl9pZCI6NH0.3I7yDXSOW3JJfiDeJYM8k3LDErV7aEbNu59l6Zh-k4c",
+								"type": "text"
 							}
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"student\": 2\n}",
+							"raw": "{\n    \"student\": 4\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -140,8 +139,7 @@
 							{
 								"key": "Authorization",
 								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjA1NDQ1LCJpYXQiOjE2ODA2MDE4NDUsImp0aSI6IjJhODg2MmI0NGRlNjQ3NGM4YjVjMDA2MzMzMzFmZGFkIiwidXNlcl9pZCI6NH0.ZjlQmz_0EykjSEW11zU4KgIeYOqyGMnheXwxv_Zdz2M",
-								"type": "text",
-								"disabled": true
+								"type": "text"
 							}
 						],
 						"body": {
@@ -154,7 +152,7 @@
 							}
 						},
 						"url": {
-							"raw": "{{local_url}}/courses/4/course_enroll/9/",
+							"raw": "{{local_url}}/courses/4/course_enroll/3/",
 							"host": [
 								"{{local_url}}"
 							],
@@ -162,7 +160,62 @@
 								"courses",
 								"4",
 								"course_enroll",
-								"9",
+								"3",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjY1MzU2LCJpYXQiOjE2ODA2NjE3NTYsImp0aSI6ImU5YTc2MTRlNjMxNDQ2OGJiZGI3MTZiMWM2MjRkOTMyIiwidXNlcl9pZCI6NH0.3I7yDXSOW3JJfiDeJYM8k3LDErV7aEbNu59l6Zh-k4c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local_url}}/courses/2/course_enroll/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"courses",
+								"2",
+								"course_enroll",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Course Drop",
+			"item": [
+				{
+					"name": "Get List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjY1MzU2LCJpYXQiOjE2ODA2NjE3NTYsImp0aSI6ImU5YTc2MTRlNjMxNDQ2OGJiZGI3MTZiMWM2MjRkOTMyIiwidXNlcl9pZCI6NH0.3I7yDXSOW3JJfiDeJYM8k3LDErV7aEbNu59l6Zh-k4c",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{local_url}}/drops/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"drops",
 								""
 							]
 						}
