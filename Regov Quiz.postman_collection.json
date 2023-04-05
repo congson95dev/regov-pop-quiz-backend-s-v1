@@ -16,7 +16,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjYxNzk5LCJpYXQiOjE2ODA2NTgxOTksImp0aSI6IjU4MjA5Y2Y1OTA5YzQ3MTlhOTQ3NWNjNmIwODc2MzAzIiwidXNlcl9pZCI6NH0.asFTzBZ35ftQBGcEYniuYqGMzEo2L0bnnHjV3x_WOnk",
+								"value": "JWT {{access_token}}",
 								"type": "text"
 							}
 						],
@@ -40,7 +40,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjYxNzk5LCJpYXQiOjE2ODA2NTgxOTksImp0aSI6IjU4MjA5Y2Y1OTA5YzQ3MTlhOTQ3NWNjNmIwODc2MzAzIiwidXNlcl9pZCI6NH0.asFTzBZ35ftQBGcEYniuYqGMzEo2L0bnnHjV3x_WOnk",
+								"value": "JWT {{access_token}}",
 								"type": "text"
 							}
 						],
@@ -65,7 +65,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjYxNzk5LCJpYXQiOjE2ODA2NTgxOTksImp0aSI6IjU4MjA5Y2Y1OTA5YzQ3MTlhOTQ3NWNjNmIwODc2MzAzIiwidXNlcl9pZCI6NH0.asFTzBZ35ftQBGcEYniuYqGMzEo2L0bnnHjV3x_WOnk",
+								"value": "JWT {{access_token}}",
 								"type": "text"
 							}
 						],
@@ -97,25 +97,16 @@
 			"name": "Course Enroll",
 			"item": [
 				{
-					"name": "Create",
+					"name": "Get List",
 					"request": {
-						"method": "POST",
+						"method": "GET",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjY1MzU2LCJpYXQiOjE2ODA2NjE3NTYsImp0aSI6ImU5YTc2MTRlNjMxNDQ2OGJiZGI3MTZiMWM2MjRkOTMyIiwidXNlcl9pZCI6NH0.3I7yDXSOW3JJfiDeJYM8k3LDErV7aEbNu59l6Zh-k4c",
+								"value": "JWT {{access_token}}",
 								"type": "text"
 							}
 						],
-						"body": {
-							"mode": "raw",
-							"raw": "{\n    \"student\": 4\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "{{local_url}}/courses/2/course_enroll/",
 							"host": [
@@ -132,13 +123,48 @@
 					"response": []
 				},
 				{
+					"name": "Create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "JWT {{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"student\": 4\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{local_url}}/courses/5/course_enroll/",
+							"host": [
+								"{{local_url}}"
+							],
+							"path": [
+								"courses",
+								"5",
+								"course_enroll",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Update",
 					"request": {
 						"method": "PUT",
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjA1NDQ1LCJpYXQiOjE2ODA2MDE4NDUsImp0aSI6IjJhODg2MmI0NGRlNjQ3NGM4YjVjMDA2MzMzMzFmZGFkIiwidXNlcl9pZCI6NH0.ZjlQmz_0EykjSEW11zU4KgIeYOqyGMnheXwxv_Zdz2M",
+								"value": "JWT {{access_token}}",
 								"type": "text"
 							}
 						],
@@ -166,32 +192,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "Get List",
-					"request": {
-						"method": "GET",
-						"header": [
-							{
-								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjY1MzU2LCJpYXQiOjE2ODA2NjE3NTYsImp0aSI6ImU5YTc2MTRlNjMxNDQ2OGJiZGI3MTZiMWM2MjRkOTMyIiwidXNlcl9pZCI6NH0.3I7yDXSOW3JJfiDeJYM8k3LDErV7aEbNu59l6Zh-k4c",
-								"type": "text"
-							}
-						],
-						"url": {
-							"raw": "{{local_url}}/courses/2/course_enroll/",
-							"host": [
-								"{{local_url}}"
-							],
-							"path": [
-								"courses",
-								"2",
-								"course_enroll",
-								""
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -205,7 +205,7 @@
 						"header": [
 							{
 								"key": "Authorization",
-								"value": "JWT eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjgwNjY1MzU2LCJpYXQiOjE2ODA2NjE3NTYsImp0aSI6ImU5YTc2MTRlNjMxNDQ2OGJiZGI3MTZiMWM2MjRkOTMyIiwidXNlcl9pZCI6NH0.3I7yDXSOW3JJfiDeJYM8k3LDErV7aEbNu59l6Zh-k4c",
+								"value": "JWT {{access_token}}",
 								"type": "text"
 							}
 						],
@@ -276,7 +276,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\": \"fudo5\",\n    \"password\": \"@dmin123\"\n}",
+							"raw": "{\n    \"username\": \"admin1\",\n    \"password\": \"admin123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
