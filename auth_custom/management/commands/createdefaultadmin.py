@@ -8,7 +8,7 @@ User = get_user_model()
 
 class Command(BaseCommand):
     def handle(self, *args, **options):
-        # it will call the command "python3 manage.py loaddata default_admin_info.json
+        # it will call the command "python3 manage.py loaddata default_admin_info.json"
         call_command('loaddata', 'default_admin_info.json')
         user = User.objects.last()
         if user:

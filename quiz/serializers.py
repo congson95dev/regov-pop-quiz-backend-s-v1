@@ -21,7 +21,7 @@ class CourseStudentSerializer(serializers.ModelSerializer):
     user = CourseStudentUserSerializer(read_only=True)
 
 
-class CourseEnrollSerializer(serializers.ModelSerializer):
+class CourseEnrollSimpleSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseEnroll
         fields = ['id', 'student']
@@ -31,7 +31,7 @@ class CourseEnrollSerializer(serializers.ModelSerializer):
 
 class CourseSerializer(serializers.ModelSerializer):
     # nested serializer to show list student that enroll in particular course
-    course_enroll = CourseEnrollSerializer(many=True, read_only=True)
+    course_enroll = CourseEnrollSimpleSerializer(many=True, read_only=True)
 
     class Meta:
         model = Course

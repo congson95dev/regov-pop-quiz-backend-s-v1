@@ -1,12 +1,12 @@
 from django.db import IntegrityError
-from djoser.serializers import UserCreateSerializer
+from djoser.serializers import UserCreateSerializer as BaseUserCreateSerializer
 from rest_framework import serializers
 
 from quiz.models import Student
 
 
-class UserCreateSerializer(UserCreateSerializer):
-    class Meta(UserCreateSerializer.Meta):
+class UserCreateSerializer(BaseUserCreateSerializer):
+    class Meta(BaseUserCreateSerializer.Meta):
         fields = ['email', 'username', 'password', 'first_name', 'last_name', 'phone', 'birth_date']
 
     phone = serializers.IntegerField(allow_null=True, required=False)
